@@ -1,20 +1,22 @@
-let express = require('express');
+let express = require('express')
+const app = express()
 //require path
 const path = require('path')
-const app = express();
-//add public directory
-app.use(express.static('public'));
+
 //add views directory path
 app.set('views', path.join(__dirname, 'views'));
 //add view template engine
 app.set('view engine', 'ejs')
 
 
-app.get('/user/:username', (req, res) => {
-    //get parameter data from addressrow
-    let user = req.params.username;
+app.get('/questions', (req, res) => {
+
+    let questions = [
+        {title: "What in Node.js?", user : "Kadi", votes : "10"},
+        {title: "What in Express.js?", user : "Mike", votes : "8"}
+    ]
     //use this dta in template
-    res.render('index.ejs', {username : user});
+    res.render('index', {questions:questions});
 });
 
 //listen app via port
