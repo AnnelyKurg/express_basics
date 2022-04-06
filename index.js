@@ -1,6 +1,6 @@
 let express = require('express');
 const app = express();
-//set up brouther address row router
+/*//set up brouther address row router
 app.get('/', (req, res)=> {
 //create html response
     res.send('<a href="/contact">Contact Us</a> <br> <a href="/about">About Us</a>');
@@ -16,7 +16,20 @@ app.get('/about', (req, res)=> {
 
 app.get('*', (req, res)=> {
     res.send('404. This page does not exist. <a href="/">Go To HomePage</a>');
+});*/
+
+/*app.get('/demo', (req, res)=> {
+//create html response
+    res.render('index.ejs');
+});*/
+
+app.get('/user/:username', (req, res) => {
+    //get parameter data from addressrow
+    let user = req.params.username;
+    //use this dta in template
+    res.render('index.ejs', {username : user});
 });
+
 //listen app via port
 app.listen(3000, ()=> {
     console.log('Server started on http://localhost:3000');
