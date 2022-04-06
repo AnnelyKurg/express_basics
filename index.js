@@ -1,5 +1,7 @@
 let express = require('express');
 const app = express();
+//add public directory
+app.use(express.static('public'));
 /*//set up brouther address row router
 app.get('/', (req, res)=> {
 //create html response
